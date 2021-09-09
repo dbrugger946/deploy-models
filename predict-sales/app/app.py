@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 
 app = Flask(__name__)
-model = pickle.load(open('app/model.pkl', 'rb'))
+model = pickle.load(open('/app/model.pkl', 'rb'))
 
 @app.route('/')
 def home():
@@ -26,8 +26,10 @@ def results():
     data = request.get_json(force=True)
     prediction = model.predict([np.array(list(data.values()))])
 
-    output = prediction[0]
-    return jsonify(output)
+    output = round(prediction[0], 2)
+    return jsonify(
+        prediction=output,
+        message="From Version 1.1")
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)

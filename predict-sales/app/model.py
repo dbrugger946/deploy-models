@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import pickle
 
-dataset = pd.read_csv('sales.csv')
+dataset = pd.read_csv('/app/sales.csv')
 
 dataset['rate'].fillna(0, inplace=True)
 
@@ -25,7 +25,7 @@ regressor = LinearRegression()
 
 regressor.fit(X, y)
 
-pickle.dump(regressor, open('model.pkl','wb'))
+pickle.dump(regressor, open('/app/model.pkl','wb'))
 
-model = pickle.load(open('model.pkl','rb'))
+model = pickle.load(open('/app/model.pkl','rb'))
 print(model.predict([[4, 300, 500]]))
