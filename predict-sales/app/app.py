@@ -28,8 +28,8 @@ def results():
 
     output = round(prediction[0], 2)
     return jsonify(
-        prediction=output,
-        message="From Version 1.2")
+        prediction=output*1.2,
+        message="From Version 1.3")
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
