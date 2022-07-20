@@ -8,7 +8,7 @@ oc delete all --selector app=sales-emitter
 
 
 
-oc new-app python:3.9-ubi8~https://github.com/dbrugger946/deploy-models\\  
+oc new-app python:3.9-ubi8~https://github.com/dbrugger946/deploy-models \\  
   --context-dir=sales-event-emitter \\  
   --name=sales-emitter  
 
