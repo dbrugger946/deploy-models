@@ -18,7 +18,7 @@ commands:
     exec:
       label: "Install the required modules"
       component: python
-      workingDir: ${PROJECTS_ROOT}/predict-sales/app
+      workingDir: ${PROJECTS_ROOT}/deploy-models/predict-sales/app
       commandLine: python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
       group:
         kind: build
@@ -26,7 +26,7 @@ commands:
     exec:
       label: "Create Pickle File From Model"
       component: python
-      workingDir: ${PROJECTS_ROOT}/predict-sales/app
+      workingDir: ${PROJECTS_ROOT}/deploy-models/predict-sales/app
       commandLine: python model.py
       group:
         kind: build
@@ -34,7 +34,7 @@ commands:
     exec:
       label: "Run the application"
       component: python
-      workingDir: ${PROJECTS_ROOT}/predict-sales/app
+      workingDir: ${PROJECTS_ROOT}/deploy-models/predict-sales/app
       commandLine: python app.py
       group:
         kind: run
