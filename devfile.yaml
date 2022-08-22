@@ -21,7 +21,7 @@ commands:
       workingDir: ${PROJECTS_ROOT}/predict-sales/app
       commandLine: python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
       group:
-        kind: config
+        kind: build
   - id: serialize
     exec:
       label: "Create Pickle File From Model"
@@ -29,7 +29,7 @@ commands:
       workingDir: ${PROJECTS_ROOT}/predict-sales/app
       commandLine: python model.py
       group:
-        kind: serialize
+        kind: build
   - id: run
     exec:
       label: "Run the application"
