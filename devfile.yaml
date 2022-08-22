@@ -25,7 +25,7 @@ commands:
   
   - id: serialize
     exec:
-      label: "Create Pickle File from Model"
+      label: "Create Pickle File From Model"
       component: python
       workingDir: ${PROJECTS_ROOT}/predict-sales/app
       commandLine: python model.py
