@@ -1,0 +1,41 @@
+schemaVersion: 2.1.0
+metadata:
+  name: python-hello-world
+components:
+  - name: python
+    container:
+      image: registry.redhat.io/devspaces/udi-rhel8:3.0
+      volumeMounts:
+        - name: venv
+          path: /home/user/.venv
+      memoryLimit: 2G
+      mountSources: true
+  - name: venv
+    volume:
+      size: 1G
+commands:
+  - id: config
+    exec:
+      label: "Install the required modules"
+      component: python
+      workingDir: ${PROJECTS_ROOT}/app
+      commandLine: python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
+      group:
+        kind: config
+  
+  - id: serialize
+    exec:
+      label: "Create Pickle File from Model"
+      component: python
+      workingDir: ${PROJECTS_ROOT}/app
+      commandLine: python model.py
+      group:
+        kind: serialize
+  - id: run
+    exec:
+      label: "Run the application"
+      component: python
+      workingDir: ${PROJECTS_ROOT}/app
+      commandLine: python app.py
+      group:
+        kind: run
