@@ -28,7 +28,7 @@ def results():
 
     output = round(prediction[0], 2)
     return jsonify(
-        prediction=output*1.2,
+        prediction=output*1.3,
         message="From Version 1.3")
 
 if __name__ == "__main__":
