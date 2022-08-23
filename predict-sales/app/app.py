@@ -1,9 +1,21 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
+from pathlib import Path
+
+pickle_path = '/app/model.pkl'
+alt_pickle_path = 'model.pkl'
 
 app = Flask(__name__)
-model = pickle.load(open('/app/model.pkl', 'rb'))
+
+default_path = Path(pickle_path)
+
+if default_path.is_file():
+    model = pickle.load(open(pickle_path, 'rb'))
+else:
+    model = pickle.load(open(alt_pickle_path, 'rb'))
+
+# model = pickle.load(open('/app/model.pkl', 'rb'))
 
 @app.route('/')
 def home():
