@@ -22,6 +22,7 @@ commands:
       commandLine: pip install -r requirements.txt
       group:
         kind: build
+        isDefault: true
   - id: serialize
     exec:
       label: "Create Pickle File From Model"
@@ -38,3 +39,4 @@ commands:
       commandLine: python app.py
       group:
         kind: run
+        isDefault: true
