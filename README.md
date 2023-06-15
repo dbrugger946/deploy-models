@@ -8,3 +8,6 @@ curl -X POST -H "Content-Type: application/json" -d  '{"rate":5, "sales_in_first
 
 
 kn service update predict-fast --image quay.io/dbrugger946/predict:1.3
+
+for s2i
+oc set env deployment deploy-models-git  APP_FILE=app/app.py
