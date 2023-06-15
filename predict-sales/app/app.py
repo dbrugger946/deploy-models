@@ -4,7 +4,7 @@ import pickle
 from pathlib import Path
 
 pickle_path = '/app/model.pkl'
-alt_pickle_path = 'model.pkl'
+alt_pickle_path = './model.pkl'
 
 app = Flask(__name__)
 
