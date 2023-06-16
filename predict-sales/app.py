@@ -3,8 +3,8 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 from pathlib import Path
 
-pickle_path = '/app/model.pkl'
-alt_pickle_path = './model.pkl'
+pickle_path = '/model.pkl'
+alt_pickle_path = 'model.pkl'
 
 app = Flask(__name__)
 
@@ -15,7 +15,7 @@ if default_path.is_file():
 else:
     model = pickle.load(open(alt_pickle_path, 'rb'))
 
-# model = pickle.load(open('/app/model.pkl', 'rb'))
+# model = pickle.load(open('/model.pkl', 'rb'))
 
 @app.route('/')
 def home():

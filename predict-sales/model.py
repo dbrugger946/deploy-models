@@ -4,7 +4,7 @@ import pandas as pd
 import pickle
 from pathlib import Path
 
-csv_path = '/app/sales.csv'
+csv_path = '/sales.csv'
 alt_csv_path = 'sales.csv'
 
 default_path = Path(csv_path)
@@ -14,7 +14,7 @@ if default_path.is_file():
 else:
     dataset = pd.read_csv(alt_csv_path) 
 
-# dataset = pd.read_csv('/app/sales.csv')
+# dataset = pd.read_csv('/sales.csv')
 
 dataset['rate'].fillna(0, inplace=True)
 
