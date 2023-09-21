@@ -53,7 +53,8 @@ def main(args):
 #        producer.send(args.topic, json.dumps(generate_event()).encode(),"1")
 #        logging.info(json.dumps(generate_event()))
         
-        producer.send(args.topic, generate_event(),1)
+        producer.send(args.topic, generate_event())
+        #producer.send(args.topic, "test","1")
         logging.info(generate_event())
         
 
