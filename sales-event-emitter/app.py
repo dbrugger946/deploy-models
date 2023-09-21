@@ -14,11 +14,11 @@ from kafka import KafkaProducer
 
 
 SALES_INPUT = [
-    {"rate":5, "sales_in_first_month":200, "sales_in_second_month":370},
-    {"rate":6, "sales_in_first_month":250, "sales_in_second_month":400},
-    {"rate":7, "sales_in_first_month":260, "sales_in_second_month":410},
-    {"rate":8, "sales_in_first_month":300, "sales_in_second_month":480},
-    {"rate":9, "sales_in_first_month":600, "sales_in_second_month":700}
+    '{"rate":5, "sales_in_first_month":200, "sales_in_second_month":370}',
+    '{"rate":6, "sales_in_first_month":250, "sales_in_second_month":400}',
+    '{"rate":7, "sales_in_first_month":260, "sales_in_second_month":410}',
+    '{"rate":8, "sales_in_first_month":300, "sales_in_second_month":480}',
+    '{"rate":9, "sales_in_first_month":600, "sales_in_second_month":700}'
 ]
 
 
@@ -53,9 +53,8 @@ def main(args):
 #        producer.send(args.topic, json.dumps(generate_event()).encode(),"1")
 #        logging.info(json.dumps(generate_event()))
         
-        producer.send(args.topic, generate_event())
-        #producer.send(args.topic, "test","1")
-        logging.info(generate_event())
+        producer.send(args.topic, bytes(generate_event(), 'utf8'))
+        # logging.info(generate_event())
         
 
         time.sleep(args.rate)
