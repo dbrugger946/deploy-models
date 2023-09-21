@@ -14,9 +14,10 @@ kn service update predict-fast --image quay.io/dbrugger946/predict:1.3
 ### for s2i  -- may not be needed depending upon location of python files
 oc set env deployment deploy-models-git  APP_FILE=app/app.py
 ### build a container from deploy-models
-podman build -t active-model .  
+podman build -t <registry/active-model:x.x> .  
 podman run  -p 5000:5000  --name mod localhost/active-model  
 ### running command line deploy-models
+- source .venv/bin/activate (assuming you are using a virtual env)
 - move to deploy-models directory
 - pip install --upgrade pip
 - pip install -r requirements.txt
