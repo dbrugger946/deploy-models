@@ -50,9 +50,13 @@ def main(args):
 #        producer.send("atm-withdrawal", json.dumps(generate_event_atm()).encode(), json.dumps(CUSTOMER[0]).encode())
 #        logging.info(json.dumps(generate_event_atm()).encode())
 
-        producer.send(args.topic, json.dumps(generate_event()).encode(),1)
-        logging.info(json.dumps(generate_event()))
+#        producer.send(args.topic, json.dumps(generate_event()).encode(),1)
+#        logging.info(json.dumps(generate_event()))
         
+        # producer.send(args.topic, generate_event(),1)
+        logging.info(generate_event())
+        
+
         time.sleep(args.rate)
     logging.info('end sending events')
 
