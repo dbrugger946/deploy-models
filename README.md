@@ -12,7 +12,18 @@ curl -X POST -H "Content-Type: application/json" -d  '{"rate":5, "sales_in_first
 kn service update predict-fast --image quay.io/dbrugger946/predict:1.3
 
 ### for s2i  -- may not be needed depending upon location of python files
-oc set env deployment deploy-models-git  APP_FILE=app/app.py
+oc set env deployment deploy-models-git  APP_FILE=app/app.py  
+
+FYI Ownership steps in s2i  
+USER root  
+STEP 5/9: COPY upload/src /tmp/src  
+STEP 6/9: RUN chown -R 1001:0 /tmp/src  
+STEP 7/9: USER 1001  
+
+
+if deploying via oc as an image oc new-app <registry/image>  
+and then doing an oc expose svc <service> it will be by default an http vice https route
+
 ### build a container from deploy-models
 podman build -t <registry/active-model:x.x> .  
 podman run  -p 5000:5000  --name mod localhost/active-model  
