@@ -1,8 +1,0 @@
-FROM fedora:33
-RUN dnf -y update && dnf -y install python3 && dnf -y install python3-pip && dnf clean all
-ADD ./requirements.txt /
-RUN python3 -m pip install -r /requirements.txt
-USER 1000
-COPY ./app /app
-EXPOSE 5000
-CMD [ "python3", "-u", "/app.py" ]
